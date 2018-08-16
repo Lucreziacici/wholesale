@@ -1,0 +1,73 @@
+@import "../../app.wxss";
+
+.commodity_item:nth-last-child(1) {
+  align-self: flex-start;
+}
+
+.commodity_item {
+  margin: 20rpx 9rpx 0 9rpx;
+  width: 358rpx;
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.15);
+}
+
+.commodity_img {
+  width: 358rpx;
+  height: 370rpx;
+  border-bottom: 1px solid #ededed;
+}
+
+.tips {
+  width: 358rpx;
+  height: 100rpx;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  margin: -110rpx 0 0 0;
+  /* z-index: 10000000; */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10pt;
+}
+
+.tag {
+  width: 108rpx;
+  height: 117rpx;
+  position: absolute;
+  margin: 0 0 0 -108rpx;
+}
+
+.commodity_message {
+  display: flex;
+  flex-direction: column;
+  margin: -10rpx 0 0 0;
+  padding: 50rpx 32rpx 40rpx 32rpx;
+  font-size: 10pt;
+}
+
+.commodity_message .commodity_title {
+  color: #090909;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 300rpx;
+  height: 70rpx;
+  font-size: 10pt;
+  line-height: 35rpx;
+  vertical-align: middle;
+}
+
+.commodity_price{
+    margin: 9rpx 0 0 0;
+    display:flex;
+    justify-content: space-between;
+}
+.commodity_price text:nth-child(2){
+  color: #ff7777;
+  border:1px solid #ff7777;
+  font-size: 8pt;
+  padding: 3rpx 10rpx;
+  border-radius: 10rpx;
+}

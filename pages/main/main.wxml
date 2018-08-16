@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<!--搜索框  -->
+<view class='search-box'>
+  <view class='search-item' bindtap="gosearch">
+    <image src='../../images/soso.png'></image>
+    <text>输入关键字</text>
+  </view>
+</view>
+<scroll-view class='scroll_box' scroll-y scroll-with-animation='true' scroll-top='{{ topNum }}'>
+  <view class="container">
+    <!--轮播  -->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-color="#eff5f5" indicator-active-color="#fa4686" interval="{{interval}}" duration="{{duration}}" class='swiper'>
+      <block wx:for="{{imgUrls}}" wx:key="{{item.id}}">
+        <swiper-item>
+          <navigator url="{{item.link_url}}">
+            <image src="{{item.img_url}}" class="slide-image" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 公告 -->
+    <view wx:if="{{page.shop_notice_url}}" class='notice'>
+      <image src='{{page.shop_notice_url}}' mode="widthFix"></image>
+    </view>
+    <!--专题  -->
+    <view wx:for="{{special}}" class="special" wx:key="{{item.id}}">
+      <view class='special-title' wx:if="{{item.category}}">
+        <view class='special-line'></view>
+        <text>{{item.category}}</text>
+        <view class='special-line'></view>
+      </view>
+      <view class='special-img'>
+         <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
+          <image src='{{item.img_url}}' mode="widthFix"></image>
+        </navigator>
+      </view>
+      <view>
+        <view class='commodity_list'>
+          <block wx:for="{{item.category_goods_list}}" wx:key="key">
+            <Commodity title='{{item.goods_name}}' commodity="{{item}}" commodityid="{{item.goods_id}}" img="{{item.main_image}}" price="{{item.show_price}}" isApprove='{{isApprove}}' item="{{item}}"></Commodity>
+          </block>
+        </view>
+      </view>
+      <view class='more'>
+        <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
+          <image mode="widthFix" src='../../images/more.png'></image>
+        </navigator>
+      </view>
+
+    </view>
+    <view class='logo-font'>
+      <image src='../../images/logo.png'></image>
+    </view>
+
+  </view>
+</scroll-view>
+<view class='top' catchtap='returnTop'>
+  <image src='../../images/TOP.png'></image>
+</view>

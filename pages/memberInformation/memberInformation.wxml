@@ -1,0 +1,100 @@
+<Toast id="Toast"></Toast>
+<form bindsubmit="formBindsubmit" bindreset="formReset">
+  <view class='information-input-list'>
+    <!-- <view class="information-input-item">
+      <view class="information-input-name">
+        姓名
+      </view>
+      <view class="information-input-input">
+        <input type="text" value='{{team.real_name}}' name="name" placeholder="请填写姓名" />
+      </view>
+    </view> -->
+     <view class="information-input-item">
+      <view class="information-input-name">
+        联系人电话
+      </view>
+      <view class="information-input-input">
+        <input type="number" name="phone" maxlength='11' value='{{team.phone}}' placeholder="请输入联系人电话" />
+      </view>
+    </view>
+   <!-- <view wx:if="{{!cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        部门
+      </view>
+      <view class="information-input-input">
+        <input type="text" name="department" value='{{team.department}}' placeholder="请输入所在部门" />
+      </view>
+    </view>
+    <view wx:if="{{!cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        主管姓名
+      </view>
+      <view class="information-input-input">
+        <input type="text" name="manager" value='{{team.manager}}' placeholder="请填主管姓名" />
+      </view>
+    </view>
+    <view wx:if="{{!cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        公司名称
+      </view>
+      <view class="information-input-input ">
+        <input type="text" name="company" value='{{team.company}}' placeholder="请填公司名称" />
+      </view>
+    </view>
+    <view wx:if="{{!cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        身份证号
+      </view>
+      <view class="information-input-input">
+        <input type="text" maxlength='18' name="id_card" value='{{team.id_card}}' placeholder="请填写身份证号" />
+      </view>
+    </view>
+        <view wx:if="{{cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        店铺名称
+      </view>
+      <view class="information-input-input ">
+        <input type="text" name="shopname"  value='{{team.cust_shop_name}}' placeholder="请输入店铺名称" />
+      </view>
+    </view>
+    <view wx:if="{{cust_shop_type=='Taobao'}}" class="information-input-item">
+      <view class="information-input-name">
+        掌柜ID
+      </view>
+      <view class="information-input-input ">
+        <input type="text" name="managerid"  value='{{team.cust_shopkeeper_id}}' placeholder="请输入掌柜ID" />
+      </view>
+    </view>
+    <view wx:if="{{cust_shop_type=='WX'}}" class="information-input-item">
+      <view class="information-input-name">
+        公众号名称
+      </view>
+      <view class="information-input-input ">
+        <input type="text" name="officialname"   value='{{team.cust_public_name}}' placeholder="请输入公众号名称" />
+      </view>
+    </view>
+    <view wx:if="{{cust_shop_type=='Offline'}}" class="information-input-item">
+      <view class="information-input-name">
+        店铺地址
+      </view>
+      <view class="information-input-input ">
+        <input type="text" name="shopaddress" value='{{team.cust_shop_address}}' placeholder="请输入店铺地址" />
+      </view>
+    </view>
+    <view wx:if="{{cust_shop_type}}" class="information-input-item">
+      <view class="information-input-name">
+        职位
+      </view>
+      <view class="information-input-input ">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view wx:if="{{index}}" class="picker">{{array[index]}}
+          </view>
+          <view wx:else>{{team.cust_position}}</view>
+        </picker>
+      </view>
+    </view> -->
+
+
+  </view>
+  <button class="body-submit common-bottom" formType="submit">保存</button>
+</form>

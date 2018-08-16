@@ -1,0 +1,206 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.9",
+	"appid": "wx56cdb2dddcd85394",
+	"projectname": "%E5%86%85%E8%B4%AD%E6%96%B0%E7%89%88%E6%9C%AC",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 9,
+			"list": [
+				{
+					"id": -1,
+					"name": "先加一个首页",
+					"pathName": "pages/main/main",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "注册",
+					"pathName": "pages/login/login",
+					"query": "openid=osCIE0dcoxQDjsKy3G1jmLP0i6Ls&cust_shop_type=Taobao"
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/team/team",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "我的地址",
+					"pathName": "pages/addressList/addressList",
+					"query": "id=5"
+				},
+				{
+					"id": 6,
+					"name": "新增地址",
+					"pathName": "pages/addAddress/addAddress",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "编辑地址",
+					"pathName": "pages/editAddress/editAddress",
+					"query": "id=5"
+				},
+				{
+					"id": 8,
+					"name": "我的资料",
+					"pathName": "pages/memberInformation/memberInformation",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "订单列表",
+					"pathName": "pages/orderList/orderList",
+					"query": "status=10&id=2"
+				},
+				{
+					"id": 9,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "order_no=D13867669211284480&status="
+				},
+				{
+					"id": -1,
+					"name": "身份证",
+					"pathName": "pages/sfzheng/sfzheng",
+					"query": "oid=FX0402132515"
+				},
+				{
+					"id": 12,
+					"name": "物流",
+					"pathName": "pages/logistics/logistics",
+					"query": "order_no=D13761420865881088"
+				},
+				{
+					"id": 12,
+					"name": "下单",
+					"pathName": "pages/final/final",
+					"query": "order_no=D13866239539086336"
+				},
+				{
+					"id": 13,
+					"name": "商品详情",
+					"pathName": "pages/product/product",
+					"query": "id=151"
+				},
+				{
+					"id": 23,
+					"name": "分类",
+					"pathName": "pages/classify/classify",
+					"query": "brand_code=B00001"
+				},
+				{
+					"id": -1,
+					"name": "授权页",
+					"pathName": "pages/accredit/accredit",
+					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "品牌",
+					"pathName": "pages/brand/brand",
+					"query": "brand_code=B00035"
+				},
+				{
+					"id": 26,
+					"name": "商品列表",
+					"pathName": "pages/productList/productList",
+					"query": "id=38"
+				},
+				{
+					"id": -1,
+					"name": "退款单列表",
+					"pathName": "pages/refundOrder/refundOrder",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "退款",
+					"pathName": "pages/refund/refund",
+					"query": "order_detail_no=D13768585644934144002&order_no=D13768585644934144&activedStatus=00&id=1"
+				},
+				{
+					"id": -1,
+					"name": "足迹",
+					"pathName": "pages/footprint/footprint",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/collect/collect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "画图",
+					"pathName": "pages/canvas/canvas",
+					"query": ""
+				},
+				{
+					"id": 24,
+					"name": "选择身份",
+					"pathName": "pages/identity/identity",
+					"query": "openid=osCIE0dcoxQDjsKy3G1jmLP0i6Ls"
+				},
+				{
+					"id": -1,
+					"name": "全部商品",
+					"pathName": "pages/allproduct/allproduct",
+					"query": "openid=osCIE0dcoxQDjsKy3G1jmLP0i6Ls&cust_shop_type=Taobao"
+				},
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "pages/zhifu/zhifu",
+					"query": "order_no=D13866239539086336"
+				},
+				{
+					"id": -1,
+					"name": "活动",
+					"pathName": "pages/activity/activity",
+					"query": ""
+				}
+			]
+		}
+	}
+}
