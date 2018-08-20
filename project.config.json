@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.9",
-	"appid": "wx56cdb2dddcd85394",
-	"projectname": "%E5%86%85%E8%B4%AD%E6%96%B0%E7%89%88%E6%9C%AC",
+	"appid": "wx1a7b98cc76d8fed4",
+	"projectname": "wholesale_git",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

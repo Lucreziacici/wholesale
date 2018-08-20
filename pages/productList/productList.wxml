@@ -29,6 +29,7 @@
     <Commodity title='{{item.goods_name}}' commodity="{{item}}" commodityid="{{item.goods_id}}" img="{{item.main_image}}" price="{{item.show_price}}" isApprove='{{isApprove}}' item="{{item}}"></Commodity>
   </block>
 </view>
+<view wx:if="{{!nomore}}" class='nomore'>٩(๑•̀ω•́๑)۶努力加载中...</view>
 <view wx:if="{{nomore}}" class='nomore'>╮(╯▽╰)╭没有更多了</view>
 <view wx:if="{{noresult}}" class='noresult'>
   <image src='../../images/noresult.jpg'></image>

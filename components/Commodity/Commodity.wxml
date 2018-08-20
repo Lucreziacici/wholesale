@@ -1,4 +1,4 @@
-<view class='commodity_item'>
+<view class='commodity_item_{{show_type}}'>
       <navigator hover-class="none" url="../product/product?id={{commodityid}}">
         <image class='commodity_img' src="{{img}}"></image>
         <view wx:if="{{commodity.stock_count>0&&commodity.stock_count<10}}" class='tips'>即将售空</view>

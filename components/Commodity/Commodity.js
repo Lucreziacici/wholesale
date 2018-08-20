@@ -8,44 +8,47 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    title:{
-       type: String,
-       value: ''
-     },
-     price:{
-       type: String,
-       value: ''
-     },
-     img:{
-       type: String,
-       value: ''
-     },
-     commodityid: {
-       type: String,
-       value: ''
-     },
-     isApprove: {
-       type: String,
-       value: ''
-     },
-     commodity:{
-       type:Object,
-       value:{}
-     }
-    
+    title: {
+      type: String,
+      value: ''
+    },
+    price: {
+      type: String,
+      value: ''
+    },
+    img: {
+      type: String,
+      value: ''
+    },
+    commodityid: {
+      type: String,
+      value: ''
+    },
+    isApprove: {
+      type: String,
+      value: ''
+    },
+    commodity: {
+      type: Object,
+      value: {}
+    },
+    show_type: {
+      type: String,
+      value: 'A'
+    }
+
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    commodity:{}
+    commodity: {}
   },
-  ready: function () {
-  },
+  ready: function() {},
   /**
    * 组件的方法列表
    */
-  methods: {
-  }
+  methods: {}
 })

@@ -87,6 +87,7 @@ page {
   color: #9a8c65;
   padding: 10rpx 0 0 0;
   margin: 0 0 0 -5rpx;
+  font-weight: bold;
 }
 
 .commodity-info {

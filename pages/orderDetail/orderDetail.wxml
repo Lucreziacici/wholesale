@@ -9,6 +9,9 @@
     收件地址:
 
   </view>
+
+
+  
   <view class='orderdetail-body'>
     <view class='orderdetail-message'>
       <text>{{order.receiver_name}}</text>

@@ -9,11 +9,11 @@
 <scroll-view class='scroll_box' scroll-y scroll-with-animation='true' scroll-top='{{ topNum }}'>
   <view class="container">
     <!--轮播  -->
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-color="#eff5f5" indicator-active-color="#fa4686" interval="{{interval}}" duration="{{duration}}" class='swiper'>
+   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-color="#eff5f5" indicator-active-color="#fa4686" interval="{{interval}}" duration="{{duration}}" class='swiper' style="height:{{imgheights[0]}}rpx;" >
       <block wx:for="{{imgUrls}}" wx:key="{{item.id}}">
         <swiper-item>
           <navigator url="{{item.link_url}}">
-            <image src="{{item.img_url}}" class="slide-image" />
+            <image bindload="imageLoad"   src="{{item.img_url}}" style="height:{{imgheights[0]}}rpx;" class="slide-image" />
           </navigator>
         </swiper-item>
       </block>
@@ -37,11 +37,16 @@
       <view>
         <view class='commodity_list'>
           <block wx:for="{{item.category_goods_list}}" wx:key="key">
-            <Commodity title='{{item.goods_name}}' commodity="{{item}}" commodityid="{{item.goods_id}}" img="{{item.main_image}}" price="{{item.show_price}}" isApprove='{{isApprove}}' item="{{item}}"></Commodity>
+            <Commodity title='{{item.goods_name}}' commodity="{{item}}" commodityid="{{item.goods_id}}" img="{{item.main_image}}" price="{{item.show_price}}" show_type="{{page.category_show_type}}" isApprove='{{isApprove}}' item="{{item}}"></Commodity>
           </block>
+          <view wx:if="{{page.category_show_type=='B'}}" class='commodity_more_B'>
+            <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
+              <image mode="widthFix" src='../../images/more.png'></image>
+            </navigator>
+          </view>
         </view>
       </view>
-      <view class='more'>
+      <view wx:if="{{page.category_show_type=='A'}}" class='more'>
         <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
           <image mode="widthFix" src='../../images/more.png'></image>
         </navigator>

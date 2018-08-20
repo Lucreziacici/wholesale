@@ -17,8 +17,8 @@
         <image bindtap='AddMyBrandCollection' wx:if="{{brandinfo.is_collected==0}}" src='../../images/enshrine.png'></image>
    </view>
 </view>
-<view class='brand_des'>
-     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>{{brandinfo.brand_intro}}
+<view class='brand_des' wx:if="{{brandinfo.brand_intro}}">
+     <text decode="{{true}}" space="{{true}}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>{{brandinfo.brand_intro}}
 
 </view>
 <SuspendedNavigation></SuspendedNavigation>

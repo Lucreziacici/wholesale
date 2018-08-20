@@ -1,7 +1,7 @@
 /**index.wxss**/
 
 page {
-  background-color: #f9f9f9;
+  background-color: white;
   width: 100%;
   height: 100%;
 }
@@ -43,13 +43,10 @@ page {
 
 .swiper {
   width: 750rpx;
-  height: 824rpx;
-  margin: 100rpx 0 0 0;
 }
 
 .slide-image {
   width: 750rpx;
-  height: 824rpx;
 }
 
 .swiper .wx-swiper-dot {
@@ -79,7 +76,7 @@ page {
 
 .notice {
   width: 750rpx;
-  margin: 20rpx 0 0 0;
+  /* margin: 20rpx 0 0 0; */
 }
 
 .notice image {
@@ -114,7 +111,7 @@ page {
 
 .special {
   width: 750rpx;
-  margin: 20rpx 0 0 0;
+  /* margin: 20rpx 0 0 0; */
 }
 
 .special-title {
@@ -140,13 +137,43 @@ page {
 
 .special-img image {
   width: 750rpx;
+  display: block;
 }
 
+/* .special-master-item {
+  width: 750rpx;
+  background-color: white;
+  height: 290rpx;
+}
+
+
+
+.special-navigation {
+  margin: 10rpx 0rpx;
+}
+
+.special-master-img {
+  display: flex;
+}
+
+.special-master-img image {
+  width: 340rpx;
+  height: 350rpx;
+}
+
+.special-navigation:nth-last-child(1) image {
+  margin: 0 66rpx 0 0;
+}
+
+.special-navigation:nth-child(n+7) {
+  display: none;
+} */
+
 .commodity_list {
-  margin: 20rpx 0 0 0;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  padding: 0 0 40rpx 0;
 }
 
 .special-box {
@@ -231,6 +258,21 @@ page {
   display: flex;
   justify-content: center;
 }
-.more image{
-  width:150rpx
+
+.more image {
+  width: 150rpx;
+}
+
+.commodity_more_B {
+  width: 200rpx;
+  height: 210rpx;
+  border: 1px solid #ededed;
+  margin: 20rpx 23rpx 0 23rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commodity_more_B image {
+  width: 150rpx;
 }
