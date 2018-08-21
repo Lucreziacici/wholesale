@@ -126,7 +126,7 @@
       <view wx:if="{{order.feight_price}}">￥{{order.feight_price}}</view>
       <view wx:else>包邮</view>
     </view>
-    <view class='order-message-item'>
+    <view wx:if="{{order.goods_tax}}" class='order-message-item'>
       <view>税金:</view>
       <view>￥{{order.goods_tax}}</view>
     </view>

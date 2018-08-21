@@ -300,13 +300,14 @@ Page({
             carts: res.data.res_content.cart_list,
             invalid_list: res.data.res_content.invalid_list,
           })
+          this.GetMyCartTotalPrice();
         }else{
           this.selectComponent("#Toast").showToast(res.data.res_message);
         }
       }, (res) => {
         console.log(res);
       })
-    this.GetMyCartTotalPrice();
+    
   },
   //取消删除
   cancelDelete: function (e) {

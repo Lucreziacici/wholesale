@@ -95,6 +95,9 @@
 .classify-list {
   display: flex;
   flex-wrap: wrap;
+  height:960rpx;
+overflow-y:auto;
+
 }
 
 .classify-list-title {
