@@ -1,5 +1,6 @@
 var app = getApp()
 var url = app.globalData.url
+var resourceurl = app.globalData.resourceurl
 var appid = app.globalData.appid
 var network = require("../../libs/network.js")
 Page({
@@ -19,6 +20,7 @@ Page({
     cart_ids:[],//选中商品ids数组
     IsShow:false,//选择数量的模态框是否展示
     ActiveItem:{},//选中项
+    resourceurl: resourceurl
     
   },
   onLoad: function (options) {
@@ -217,24 +219,42 @@ Page({
     var opneid = e.detail.value.openid
     var appid = e.detail.value.appid
     this.setData({
-      modalStatus: false,
       cartvalues: e.detail.value.cartvalues,
       opneid: e.detail.value.openid
     });
+    if (this.data.cart_ids.length) {
+      this.setData({
+        modalStatus: false,
+      });
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '请选择商品',
+        showCancel: false,
+        success: function (res) {
+        }
+      })
+    }
   },
   //弹出结算提示框
   confirmAccount: function (e) {
     this.setData({
       modalStatus: true,
     });
+    
     if (this.data.cart_ids.length) {
       var data={};
       data.cart_ids = this.data.cart_ids.join(",")
-      
+      wx.showLoading({
+        title: '生成订单中…',
+        mask: true
+      })
       network.POST('Order/CreateOrderFromCart',data,
         (res) => {
           console.log(res)
+          wx.hideLoading();
           if (res.data.res_status_code=='0'){
+            
             wx.navigateTo({
               url: '../final/final?order_no=' + res.data.res_content.order.order_no
             })

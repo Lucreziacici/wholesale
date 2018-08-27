@@ -1,5 +1,6 @@
 // pages/refundOrder/refundOrder.js
 var app = getApp();
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -16,6 +17,7 @@ Page({
     page_size: "6",//一页多少条记录
     nomore: false,
     noresult: false,
+    resourceurl: resourceurl
   },
 
   /**

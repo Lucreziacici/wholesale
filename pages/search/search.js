@@ -4,6 +4,7 @@ var app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid
 var title = app.globalData.title
+var resourceurl = app.globalData.resourceurl
 var list = null;
 var network = require("../../libs/network.js")
 Page({
@@ -14,12 +15,9 @@ Page({
   data: {
     resource: app.globalData.url,
     keyword:"",
-
-
-
-      
     history:[],
     hot:[],
+    resourceurl: resourceurl
   },
   /**
  * 生命周期函数--监听页面加载

@@ -3,6 +3,6 @@
 <!-- <open-data type="userNickN
 ame"></open-data> -->
 <!-- 需要使用 button 来授权登录 -->
-<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='login'><image src='../../images/accredit_btn.png'></image></button>
+<button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='login'><image src='{{resourceurl}}accredit_btn.png'></image></button>
 <view wx:else>请升级微信版本</view>
 <Toast id="Toast"></Toast>

@@ -1,5 +1,6 @@
 // pages/brand/brand.js
 var app = getApp()
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -7,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    brandinfo:{}
+    brandinfo:{},
+    resourceurl: resourceurl
   },
 
   /**

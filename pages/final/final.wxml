@@ -1,11 +1,11 @@
 <view class="view_top">
-  <image class='view_top_img' src="../../images/横条.png"></image>
+  <image class='view_top_img' src="{{resourceurl}}line.png"></image>
 </view>
 <!--地址  -->
 <navigator class='white choose-item-box' url="../addressList/addressList?oid={{order.order_no}}&onmsg=true">
   <view class='choose-item'>
     <view class='choose-item-left'>
-      <image src="../../images/location_icon.png"></image>
+      <image src="{{resourceurl}}location_icon.png"></image>
     </view>
     <!--如果有默认地址  -->
     <view class='choose-item-center' wx:if="{{order.province!=null}}">
@@ -27,7 +27,7 @@
       </view>
     </view>
     <view class='choose-item-right'>
-      <image src="../../images/箭头.png">
+      <image src="{{resourceurl}}8.png">
       </image>
     </view>
   </view>
@@ -36,7 +36,7 @@
 <view class='white choose-item-box' bindtap='openautonym'>
   <view class='choose-item'>
     <view class='choose-item-left'>
-      <image src="../../images/authentication_icon.png"></image>
+      <image src="{{resourceurl}}authentication_icon.png"></image>
     </view>
     <!--如果有默认地址  -->
     <view wx:if="{{order.real_name}}" class='choose-item-center'>
@@ -57,7 +57,7 @@
       </view>
     </view>
     <view class='choose-item-right'>
-      <image src="../../images/箭头.png">
+      <image src="{{resourceurl}}8.png">
       </image>
     </view>
   </view>
@@ -91,7 +91,7 @@
     <view wx:if="{{orderdetail_list[0].detail_list.length>1}}" class='order_more' bindtap='showmore'>
       <text wx:if="{{!showmore}}">显示另外{{orderdetail_list[0].detail_list.length-1}}款(共{{order.goods_count}}件)</text>
       <text wx:else>点击收起</text>
-      <image style='transform:{{showmore?"rotate(180deg)":"rotate(0deg)"}};' src='../../images/arrow_top.png'></image>
+      <image style='transform:{{showmore?"rotate(180deg)":"rotate(0deg)"}};' src='{{resourceurl}}arrow_top.png'></image>
     </view>
   </view>
 
@@ -149,11 +149,11 @@
 </view>
 <view wx:if="{{showpay}}" class='chooselist white'>
   <view class='chooseitem' data-type='1' catchtap='choosemethod'>
-    <image style='width:60rpx;height:60rpx;' data-type='1' catchtap='choosemethod' src='../../images/wxpay.png'></image>
+    <image style='width:60rpx;height:60rpx;' data-type='1' catchtap='choosemethod' src='{{resourceurl}}wxpay.png'></image>
     <text data-type='1' catchtap='choosemethod'>微信支付</text>
   </view>
   <view class='chooseitem' data-type='2' catchtap='choosemethod'>
-    <image src='../../images/alipay.png' data-type='2' catchtap='choosemethod'></image>
+    <image src='{{resourceurl}}alipay.png' data-type='2' catchtap='choosemethod'></image>
     <text data-type='2' catchtap='choosemethod'>支付宝支付</text>
   </view>
   <view class='chooseitem' data-type='3' catchtap='choosemethod'>
@@ -165,7 +165,6 @@
   <button bindtap='save' class='savebutton'>保存到本地</button>
 </view>
 <view wx:if="{{autonym}}" class='layer' bindtap='openautonym'>
-
 </view>
 <view class='model_box' wx:if="{{autonym}}">
   <view  class='model white'>
@@ -186,5 +185,21 @@
       *商家负责提交消息，并对您的身份信息保密，绝不传播或利用其他地方，请放心填写
     </view>
   </view>
+</view>
+<view wx:if="{{islayer}}" class='model_box' >
+  <view  class='model white'>
+    <view class='model_header'>
+      温馨提示
+    </view>
+    <view class='model_body'>
+      <view class='tips'>{{tips}}</view>
+      <view class='button' bindtap='goorderlist'>{{button}}</view>
+    </view>
+    <view class='model_footer'>
+    </view>
+  </view>
+</view>
+<view wx:if="{{islayer}}" class='layer'>
+
 </view>
   <Toast id="Toast"></Toast>

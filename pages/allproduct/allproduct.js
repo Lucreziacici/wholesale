@@ -1,5 +1,6 @@
 // pages/productList/productList.js
 var app = getApp()
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -8,25 +9,26 @@ Page({
    */
   data: {
     currentTab: 1,
-    filter: false,//是否打开筛选框
-    brand: [],//品牌
-    productList: [],//商品列表
-    key_word: "",//搜索关键词
-    brand_code: "",//品牌code
-    page_index: "1",//当前页
-    page_size: "8",//每页记录数
-    order_column: "",//排序字段 show_price
-    order_sord: "asc",//正序asc，倒序desc
-    category_id: "",//子分类id
-    price_active_img:"../../images/arrow_gray.png",
-    nomore: false,//是否加载到底
-    noresult: false
+    filter: false, //是否打开筛选框
+    brand: [], //品牌
+    productList: [], //商品列表
+    key_word: "", //搜索关键词
+    brand_code: "", //品牌code
+    page_index: "1", //当前页
+    page_size: "8", //每页记录数
+    order_column: "", //排序字段 show_price
+    order_sord: "asc", //正序asc，倒序desc
+    category_id: "", //子分类id
+    price_active_img: resourceurl+"/arrow_gray.png",
+    nomore: false, //是否加载到底
+    noresult: false,
+    resourceurl: resourceurl
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     app.getUserInfo((userInfo, open_id) => {
       //更新数据
       this.setData({
@@ -68,7 +70,7 @@ Page({
     this.getShopGoodsList();
   },
   // 获取商品列表
-  getShopGoodsList: function () {
+  getShopGoodsList: function() {
     var getdata = {};
     getdata.key_word = this.data.key_word;
     getdata.brand_code = this.data.brand_code;
@@ -105,19 +107,19 @@ Page({
 
   },
   //排序
-  orderby: function (e) {
-    if (e.currentTarget.id=='2'){
+  orderby: function(e) {
+    if (e.currentTarget.id == '2') {
       if (this.data.order_column == 'show_price' && this.data.order_sord == 'asc') {
         this.setData({
           order_column: 'show_price',
           order_sord: 'desc',
-          price_active_img: '../../images/arrow_active_down.png'
+          price_active_img: resourceurl+'arrow_active_down.png'
         });
       } else {
         this.setData({
           order_column: 'show_price',
           order_sord: 'asc',
-          price_active_img: '../../images/arrow_active_up.png'
+          price_active_img: resourceurl +'arrow_active_up.png'
         });
       }
       this.setData({
@@ -127,8 +129,7 @@ Page({
         productList: [],
         noresult: false,
       });
-    }
-    else{
+    } else {
       this.setData({
         currentTab: e.currentTarget.id,
         order_column: e.currentTarget.dataset.column,
@@ -137,31 +138,31 @@ Page({
         nomore: false,
         productList: [],
         noresult: false,
-        price_active_img: '../../images/arrow_gray.png'
+        price_active_img: resourceurl +'arrow_gray.png'
       });
     }
     this.getShopGoodsList();
   },
   // 打开筛选框
-  openchoosefilter: function () {
+  openchoosefilter: function() {
     this.setData({
       filter: true,
     })
   },
   // 关闭筛选框
-  closechoosefilter: function () {
+  closechoosefilter: function() {
     this.setData({
       filter: false
     })
   },
   // 前往搜索
-  gosearch: function () {
+  gosearch: function() {
     wx.navigateTo({
       url: '../search/search'
     })
   },
   // 选择排序
-  navbarTap: function (e) {
+  navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.id,
       order_column: e.currentTarget.dataset.column,
@@ -174,7 +175,7 @@ Page({
     this.getShopGoodsList();
   },
   //筛选排序
-  tagChoose: function (e) {
+  tagChoose: function(e) {
     let brand = this.data.brand;
     brand[e.target.id].checked = !brand[e.target.id].checked;
     this.setData({
@@ -183,7 +184,7 @@ Page({
 
   },
   //重置：
-  reset: function (e) {
+  reset: function(e) {
     let brand = this.data.brand;
     for (var i = 0; i < brand.length; i++) {
       brand[i].checked = false;
@@ -193,7 +194,7 @@ Page({
     })
   },
   //确定
-  confirm: function (e) {
+  confirm: function(e) {
     //先关掉筛选框
     let brand = this.data.brand;
     let brandcode = []
@@ -216,7 +217,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var page_index = parseInt(this.data.page_index) + 1
     this.setData({
       page_index: page_index
@@ -227,7 +228,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

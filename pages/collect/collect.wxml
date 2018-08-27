@@ -13,7 +13,7 @@
     </block>
   </view>
   <view wx:if="{{noresult}}" class='noresult'>
-      <image src='../../images/history_icon.png'></image>
+      <image src='{{resourceurl}}history_icon.png'></image>
       <text>o(╥﹏╥)o您还没有收藏过的商品</text>
       <navigator class='link' hover-class='none' url='../productList/productList'>去逛逛吧</navigator>
     </view>
@@ -42,7 +42,7 @@
       </view>
     </view>
     <view wx:if="{{noresult2}}" class='noresult'>
-      <image src='../../images/history_icon.png'></image>
+      <image src='{{resourceurl}}history_icon.png'></image>
       <text>o(╥﹏╥)o您还没有收藏过的品牌</text>
       <navigator class='link' hover-class='none' url='../productList/productList'>去逛逛吧</navigator>
     </view>

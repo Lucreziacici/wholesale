@@ -103,7 +103,7 @@
       </view>
     </view> -->
     <view class='view_xie'>
-      <image style="height: 40rpx;width: 40rpx;position: relative;top:10rpx;" src="{{url1}}/images/{{radio1?'2':'1'}}.png" bindtap='radioChange'></image>
+      <image style="height: 40rpx;width: 40rpx;position: relative;top:10rpx;" src="{{resourceurl}}{{radio1?'2':'1'}}.png" bindtap='radioChange'></image>
       <text>我已同意</text>
       <text>《缙嘉注册协议》</text>
     </view>

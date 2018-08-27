@@ -2,7 +2,7 @@
 <!--搜索框  -->
 <view class='search-box'>
   <view class='search-item' bindtap="gosearch">
-    <image src='../../images/soso.png'></image>
+    <image src='{{resourceurl}}soso.png'></image>
     <text>输入关键字</text>
   </view>
 </view>
@@ -41,24 +41,24 @@
           </block>
           <view wx:if="{{page.category_show_type=='B'}}" class='commodity_more_B'>
             <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
-              <image mode="widthFix" src='../../images/more.png'></image>
+              <image mode="widthFix" src='{{resourceurl}}more.png'></image>
             </navigator>
           </view>
         </view>
       </view>
       <view wx:if="{{page.category_show_type=='A'}}" class='more'>
         <navigator url='../activity/activity?category={{item.category}}&&category_order={{item.category_order}}&&home_id={{page.id}}' hover-class='none'>
-          <image mode="widthFix" src='../../images/more.png'></image>
+          <image mode="widthFix" src='{{resourceurl}}more.png'></image>
         </navigator>
       </view>
 
     </view>
-    <view class='logo-font'>
-      <image src='../../images/logo.png'></image>
-    </view>
+    <!-- <view class='logo-font'>
+      <image src='{{resourceurl}}logo.png'></image>
+    </view> -->
 
   </view>
 </scroll-view>
 <view class='top' catchtap='returnTop'>
-  <image src='../../images/TOP.png'></image>
+  <image src='{{resourceurl}}TOP.png'></image>
 </view>

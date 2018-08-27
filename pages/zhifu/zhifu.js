@@ -31,10 +31,13 @@ Page({
         this.selectComponent("#Toast").showToast("信息读取失败，请刷新后重试");
       }
     })
+    wx.showLoading({
+      title: '请求支付中…',
+    })
     var that = this
     network.POST('OrderPay/WxOrderPay', { order_no: options.order_no },
       (res) => {
-        
+        wx.hideLoading();
         if (res.data.res_status_code == '0') {
           let paydata = res.data.res_content;
           paydata = JSON.parse(paydata);

@@ -1,5 +1,5 @@
 {
-  "navigationBarBackgroundColor": "white",
+  "navigationBarBackgroundColor": "#f7f7f7",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "授权登录",
   "usingComponents": {

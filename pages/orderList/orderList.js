@@ -2,6 +2,7 @@
 var app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid;
+var resourceurl = app.globalData.resourceurl
 import Watch from '../../libs/watch';
 var network = require("../../libs/network.js")
 let watch;
@@ -38,7 +39,8 @@ Page({
     page_size: "6", //一页多少条记录
     nomore: false,
     noresult: false,
-    activedStatus: ""
+    activedStatus: "",
+    resourceurl: resourceurl
   },
 
 

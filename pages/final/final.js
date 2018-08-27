@@ -1,5 +1,6 @@
 var app = getApp()
 var url = app.globalData.url
+var resourceurl = app.globalData.resourceurl
 var appid = app.globalData.appid
 var network = require("../../libs/network.js")
 var promise = require("../../libs/promise.util.js")
@@ -23,7 +24,9 @@ Page({
     team: {
       real_name: "",
       id_card: ""
-    }
+    },
+    islayer:false,
+    resourceurl: resourceurl
   },
 
   onLoad: function (options) {
@@ -44,9 +47,13 @@ Page({
   },
   //获取订单详情
   getOrderDetail: function () {
+    wx.showLoading({
+      title: '加载中…',
+    })
     network.GET('Order/OrderDetail?order_no=' + this.data.order_no,
       (res) => {
         console.log(res.data)
+         wx.hideLoading();
         if (res.data.res_status_code == '0') {
           this.setData({
             orderdetail_list: res.data.res_content.package_list,
@@ -148,9 +155,12 @@ Page({
         autonym: true
       })
     } else {
-
+      wx.showLoading({
+        title: '生成订单中…',
+      })
       network.POST('OrderPay/AliOrderPay', { order_no: this.data.order_no },
         (res) => {
+          wx.hideLoading();
           if (res.data.res_status_code == '0') {
             this.setData({
               alipay: true
@@ -192,15 +202,35 @@ Page({
               wx.hideLoading();
             })
           } else {
-            this.selectComponent("#Toast").showToast(res.data.res_message);
+            if (res.data.res_status_code == '40030') {
+              this.setData({
+                tips: res.data.res_message,
+                islayer: true,
+                button: '前往付款'
+              })
+            } else {
+              this.setData({
+                tips: res.data.res_message,
+                islayer: true,
+                button: '去逛逛吧'
+              })
+            }
           }
-
         }, (res) => {
           console.log(res);
         })
     }
-
-
+  },
+  goorderlist: function () {
+    if (this.data.button == '去逛逛吧') {
+      wx.redirectTo({
+        url: '../productList/productList'
+      })
+    } else {
+      wx.redirectTo({
+        url: '../orderList/orderList?status=00&id=1'
+      })
+    }
   },
   //保存到本地
   save: function () {

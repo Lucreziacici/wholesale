@@ -7,7 +7,7 @@
       <view>
         <text wx:if="{{order.refund_no}}" class='order-orderid'>退款单号：{{order.refund_no}}</text>
         <text wx:else class='order-orderid'>订单号：{{order.order_no}}</text>
-        <image src="../../images/8.png"></image>
+        <image src="{{resourceurl}}8.png"></image>
       </view>
     </navigator>
   </view>

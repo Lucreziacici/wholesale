@@ -1,5 +1,6 @@
 // pages/accredit/accredit.js
 var app = getApp()
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -7,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    resourceurl: resourceurl
   },
 
   /**

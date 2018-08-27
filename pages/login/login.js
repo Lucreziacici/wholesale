@@ -3,6 +3,7 @@
 var app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
   data: {
@@ -10,6 +11,7 @@ Page({
     radio1: true,//单选框
     openid: '',//openid
     array: ['老板', '采购', '店长'],
+    resourceurl: resourceurl
   },
   /**
    * 生命周期函数--监听页面加

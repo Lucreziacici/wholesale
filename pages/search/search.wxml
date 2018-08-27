@@ -2,22 +2,22 @@
 <view class='header white'>
   <view class='inputbox'>
     <input type="text" focus='true' placeholder="输入关键字搜索" name="keyword" value='{{keyword}}' confirm-type="search" bindconfirm="keywordSubmit" bindinput="keywordInput"></input>
-    <image src="../../images/soso.png" bindtap='keywordSubmit'></image>
+    <image src="{{resourceurl}}soso.png" bindtap='keywordSubmit'></image>
   </view>
 
 </view>
-<view class='search_box white'>
+<view wx:if="{{hot.length>0}}" class='search_box white'>
   <view class='search_div'>
     <view class='search_title'>热词</view>
     <view class='search_list' wx:if="{{hot.length>0}}"><text  wx:for="{{hot}}" wx:key="{{item}}" data-key="{{item.search_word}}" bindtap='searchHistory' >{{item.search_word}}</text></view>
-    <view class='search_list_empty' wx:else><image src='../../images/history.png'></image>暂无搜索记录</view>
+    <view class='search_list_empty' wx:else><image src='{{resourceurl}}history.png'></image>暂无搜索记录</view>
   </view>
 </view>
 <view class='search_box white'>
   <view class='search_div'>
     <view class='search_title'>历史搜索记录</view>
     <view class='search_list' wx:if="{{history.length>0}}"><text  wx:for="{{history}}" wx:key="{{item}}" data-key="{{item}}" bindtap='searchHistory' >{{item}}</text></view>
-    <view class='search_list_empty' wx:else><image src='../../images/history.png'></image>暂无搜索记录</view>
+    <view class='search_list_empty' wx:else><image src='{{resourceurl}}history.png'></image>暂无搜索记录</view>
   </view>
 </view>
 <!-- <view class='search_box white'>

@@ -3,6 +3,7 @@ var app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid
 var title = app.globalData.title
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -16,6 +17,7 @@ Page({
     page_size: "8",//每页记录数
     nomore:false,
     noresult:false,
+    resourceurl: resourceurl
   },
 
   /**

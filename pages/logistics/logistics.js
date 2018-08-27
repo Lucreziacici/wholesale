@@ -1,6 +1,7 @@
 var app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -11,6 +12,7 @@ Page({
     order: {},
     logistics: [],
     packagelist: [],//包裹列表
+    resourceurl: resourceurl
   },
 
   /**

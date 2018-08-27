@@ -2,6 +2,7 @@
 var WxParse = require('../../wxParse/wxParse.js')
 var app = getApp()
 var url = app.globalData.url
+var resourceurl = app.globalData.resourceurl
 var appid = app.globalData.appid
 var network = require("../../libs/network.js")
 Page({
@@ -24,6 +25,7 @@ Page({
     Buystate: false, //是否能购买
     userid: "", //用户id
     // tax:0,//商品税费
+    resourceurl: resourceurl
   },
   onLoad: function(options) {
     app.getUserInfo((userInfo, open_id) => {
@@ -113,7 +115,7 @@ Page({
                 tax: res.data.res_content.spec_list[i].tax
               });
             } else if (res.data.res_content.intax == '1' && res.data.res_content.inbond == '1') {
-              var price = res.data.res_content.spec_list[i].price + res.data.res_content.spec_list[i].tax;
+              var price = (res.data.res_content.spec_list[i].price + res.data.res_content.spec_list[i].tax).toFixed(2) ;
               this.setData({
                 activeprice: price
               });
@@ -131,7 +133,7 @@ Page({
                 tax: res.data.res_content.spec_list[i].tax
               });
             } else if (res.data.res_content.intax == '1' && res.data.res_content.inbond == '1') {
-              var price = res.data.res_content.spec_list[i].price + res.data.res_content.spec_list[i].tax;
+              var price = (res.data.res_content.spec_list[i].price + res.data.res_content.spec_list[i].tax).toFixed(2);
               this.setData({
                 activeprice: price
               });
@@ -188,7 +190,7 @@ Page({
         tax: options.currentTarget.dataset.tax
       });
     } else {
-      var price = options.currentTarget.dataset.price + options.currentTarget.dataset.tax;
+      var price = (options.currentTarget.dataset.price + options.currentTarget.dataset.tax).toFixed(2);
       this.setData({
         activeprice: price
       });
@@ -257,9 +259,14 @@ Page({
       cartdata.goods_id = this.data.product.goods_id;
       cartdata.spec_no = this.data.currentTab;
       cartdata.count = this.data.quantity;
+      wx.showLoading({
+        title: '生成订单中…',
+        mask: true
+      })
       network.POST('Order/CreateOrderFromGoods', cartdata,
         (res) => {
           console.log(res)
+          wx.hideLoading();
           if (res.data.res_status_code == '0') {
             wx.navigateTo({
               url: '../final/final?order_no=' + res.data.res_content.order.order_no

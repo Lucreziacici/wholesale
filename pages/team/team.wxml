@@ -9,7 +9,7 @@
   <navigator class='member-item' url="../orderList/orderList">
     <view class="member-item-box">
       <text>我的订单</text>
-      <image src="../../images/箭头.png"></image>
+      <image src="{{resourceurl}}8.png"></image>
     </view>
   </navigator>
   <view class='member-list-item'>
@@ -31,7 +31,7 @@
     <navigator class='member-item' url="{{item.link}}">
       <view class=" member-item-box">
         <text>{{item.name}}</text>
-        <image src="../../images/箭头.png"></image>
+        <image src="{{resourceurl}}8.png"></image>
       </view>
     </navigator>
   </block>
@@ -40,7 +40,7 @@
   <view class='member-item'>
     <navigator url='/pages/service/service' class="member-item-box">
       <text>联系客服</text>
-      <image src="../../images/箭头.png"></image>
+      <image src="{{resourceurl}}8.png"></image>
     </navigator>
   </view>
 </view> -->

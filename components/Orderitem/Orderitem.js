@@ -1,5 +1,6 @@
 // components/Toast/Toast.js
 var app = getApp()
+var resourceurl = app.globalData.resourceurl
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -23,6 +24,7 @@ Component({
    */
   data: {
     resource: app.globalData.url,//资源路径
+    resourceurl: resourceurl
   },
   ready:function(){
     // console.log(this.data)

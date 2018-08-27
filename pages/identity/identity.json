@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "选择注册身份",
-  "usingComponents": {
-    "Toast": "/components/Toast/Toast"
-  }
-}

@@ -9,7 +9,7 @@
 <Orderitem wx:for="{{orderList}}" wx:key="{{key}}" order="{{item}}" source="orderList" bind:deleteOrder="deleteOrder" bind:refundOrder="refundOrder" bind:confirmOrder="confirmOrder" bind:cancelrefund="cancelrefund" bind:refund="refund" bind:cancelOrder="cancelOrder"></Orderitem>
 <view wx:if="{{nomore}}" class='nomore'>╮(╯▽╰)╭没有更多了</view>
 <view wx:if="{{noresult}}" class='noresult'>
-      <image src='../../images/noorder.png'></image>
+      <image src='{{resourceurl}}noorder.png'></image>
       <text>o(╥﹏╥)o没有订单诶</text>
       <navigator url="../productList/productList">去逛逛吧</navigator>
 </view>

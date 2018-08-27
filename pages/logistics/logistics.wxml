@@ -60,5 +60,5 @@
 </block>
 
 <view wx:if="{{packagelist.length==0}}" class='loading'>
-  <image src='../../images/tail-spinner.gif'></image>
+  <image src='{{resourceurl}}tail-spinner.gif'></image>
 </view>

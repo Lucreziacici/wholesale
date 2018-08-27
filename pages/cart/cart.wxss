@@ -214,12 +214,6 @@ page {
   color: #989898;
 }
 
-.checkbox1 {
-  border-radius: 10rpx;
-  background-image: url('../../images/1.png') no-repeat;
-  background-size: 100% 100%;
-}
-
 .nei-img1 {
   width: 120rpx;
   height: 120rpx;

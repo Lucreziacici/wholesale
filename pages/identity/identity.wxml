@@ -1,9 +1,0 @@
-<!-- 选择身份 -->
-<view class='chooseul'>
-  <view wx:for="{{identitylist}}" class='chooseli'>
-    <navigator url='../login/login?openid={{openid}}&&cust_shop_type={{item.shoptype}}' hover-class='none'>
-      <image src='{{item.image}}'></image>
-      <view class='chooseitem'>{{item.name}}</view>
-    </navigator>
-  </view>
-</view>

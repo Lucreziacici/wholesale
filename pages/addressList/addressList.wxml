@@ -18,7 +18,7 @@
         <view class="address-checkbox" data-id="{{item.id}}" bindtap="radioChange">
           <!-- <label class='checkbox'> -->
             <!-- <checkbox value="{{item.id}}" data-id='{{item.id}}' hidden="false" /> -->
-            <image src="../../images/{{item.is_default=='1'?'11':'00'}}.png" data-id='{{item.id}}'></image>
+            <image src="{{resourceurl}}{{item.is_default=='1'?'11':'00'}}.png" data-id='{{item.id}}'></image>
             <text class="{{item.is_default=='1'?'common-color':''}}">设为默认</text>
           <!-- </label> -->
         </view>
@@ -26,13 +26,13 @@
       <view class="address-edit-option">
         <view class="address-edit-redact">
           <navigator url="../editAddress/editAddress?id={{item.id}}">
-            <image src="../../images/dibianji.png">
+            <image src="{{resourceurl}}dibianji.png">
             </image>
             <text>编辑</text>
           </navigator>
         </view>
         <view class=" address-edit-delete" bindtap="modalShow" id="{{item.id}}">
-          <image src="../../images/dishanchu.png">
+          <image src="{{resourceurl}}dishanchu.png">
           </image>
           <text>删除</text>
         </view>

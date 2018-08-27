@@ -1,5 +1,6 @@
 // pages/productList/productList.js
 var app = getApp()
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
 
@@ -8,19 +9,20 @@ Page({
    */
   data: {
     currentTab: 1,
-    filter: false,//是否打开筛选框
-    brand: [],//品牌
-    productList: [],//商品列表
-    key_word: "",//搜索关键词
-    brand_code: "",//品牌code
-    page_index: "1",//当前页
-    page_size: "8",//每页记录数
-    order_column: "",//排序字段 show_price
-    order_sord: "asc",//正序asc，倒序desc
-    category_id: "",//子分类id
-    price_active_img: "../../images/arrow_gray.png",
-    nomore: false,//是否加载到底
-    noresult: false
+    filter: false, //是否打开筛选框
+    brand: [], //品牌
+    productList: [], //商品列表
+    key_word: "", //搜索关键词
+    brand_code: "", //品牌code
+    page_index: "1", //当前页
+    page_size: "8", //每页记录数
+    order_column: "", //排序字段 show_price
+    order_sord: "asc", //正序asc，倒序desc
+    category_id: "", //子分类id
+    price_active_img: resourceurl + "/arrow_gray.png",
+    nomore: false, //是否加载到底
+    noresult: false,
+    resourceurl: resourceurl
   },
 
   /**
@@ -111,13 +113,13 @@ Page({
         this.setData({
           order_column: 'show_price',
           order_sord: 'desc',
-          price_active_img: '../../images/arrow_active_down.png'
+          price_active_img: resourceurl + 'arrow_active_down.png'
         });
       } else {
         this.setData({
           order_column: 'show_price',
           order_sord: 'asc',
-          price_active_img: '../../images/arrow_active_up.png'
+          price_active_img: resourceurl + 'arrow_active_up.png'
         });
       }
       this.setData({
@@ -127,8 +129,7 @@ Page({
         productList: [],
         noresult: false,
       });
-    }
-    else {
+    } else {
       this.setData({
         currentTab: e.currentTarget.id,
         order_column: e.currentTarget.dataset.column,
@@ -137,7 +138,7 @@ Page({
         nomore: false,
         productList: [],
         noresult: false,
-        price_active_img: '../../images/arrow_gray.png'
+        price_active_img: resourceurl + 'arrow_gray.png'
       });
     }
     this.getShopGoodsList();

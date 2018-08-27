@@ -4,43 +4,15 @@ const app = getApp()
 var url = app.globalData.url
 var appid = app.globalData.appid
 var title = app.globalData.title
+var resourceurl = app.globalData.resourceurl
 var network = require("../../libs/network.js")
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [{
-        src: '../../images/swiper.jpg',
-        link: "/pages/product/product"
-      },
-      {
-        src: '../../images/swiper.jpg',
-        link: "/pages/product/product"
-      },
-      {
-        src: '../../images/swiper.jpg',
-        link: "/pages/product/product"
-      }
-    ],
-    navigation: [{
-        src: "../../images/question-icon.png",
-        title: "常见问题",
-        link: "/pages/question/question"
-      },
-      {
-        src: "../../images/new-icon.png",
-        title: "新品推荐"
-      },
-      {
-        src: "../../images/skin-care-icon.png",
-        title: "护肤推荐"
-      },
-      {
-        src: "../../images/beauty-icon.png",
-        title: "美妆推荐"
-      }
-    ],
+    imgUrls: [],
+    navigation: [],
     special: [],
     page: {},
     indicatorDots: true,
@@ -52,6 +24,7 @@ Page({
     scrollTop: 100,
     topNum: "",
     imgheights: [],
+    resourceurl: resourceurl
   },
   onLoad: function() {
     network.IsuserInfo();
