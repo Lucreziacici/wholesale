@@ -2,7 +2,7 @@
 page{
   background:url(http://cdn.mallimg.shjinjia.com.cn/Uploads/SysImages/135/accreditbg.png) no-repeat;
   background-size: 100% auto;
-  background-color: #fecac9;
+  /* background-color: #fecac9; */
   /* display: flex;
   justify-content: center;
   width: 100%; */

@@ -79,7 +79,10 @@ transform:rotate(0deg) scale(1) translate(5%,0%);
   color: #aaa;
   padding: 20rpx 0;
 }
-
+.nomore image{
+  width: 100rpx;
+  height: 100rpx;
+}
 .noresult {
   display: flex;
   justify-content: center;

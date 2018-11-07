@@ -33,7 +33,7 @@
   </view>
 </navigator>
 <!--身份认证  -->
-<view class='white choose-item-box' bindtap='openautonym'>
+<navigator class='white choose-item-box' url="../idcardList/idcardList?oid={{order.order_no}}&onmsg=true">
   <view class='choose-item'>
     <view class='choose-item-left'>
       <image src="{{resourceurl}}authentication_icon.png"></image>
@@ -61,7 +61,7 @@
       </image>
     </view>
   </view>
-</view>
+</navigator>
 <!--商品信息  -->
 <view class="orderdetail">
   <view class='order-item white'>
@@ -103,8 +103,8 @@
     <text>合计:￥{{order.pay_price}}</text>
   </view>
   <view class='paybody'>
-    <view wx:if="{{paymethod=='wx'}}" bindtap="zhifu">微信支付</view>
-    <view wx:if="{{paymethod=='ali'}}" bindtap='alipay'>支付宝支付</view>
+  <view wx:if="{{paymethod=='wx'}}" ><form bindsubmit="zhifu" report-submit="true"><button formType="submit">微信支付</button></form></view>
+    <view wx:if="{{paymethod=='ali'}}" ><form bindsubmit="alipay" report-submit="true"><button formType="submit">支付宝支付</button></form></view>
   </view>
   <view class='payfooter'>
     <text>您还可以使用</text>

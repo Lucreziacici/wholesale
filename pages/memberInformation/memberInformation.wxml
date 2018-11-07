@@ -14,7 +14,7 @@
         联系人电话
       </view>
       <view class="information-input-input">
-        <input type="number" name="phone" maxlength='11' value='{{team.phone}}' placeholder="请输入联系人电话" />
+        <input type="number" name="phone" maxlength='11' value='{{phone}}' placeholder="请输入联系人电话" bindinput="updatenum" />
       </view>
     </view>
    <!-- <view wx:if="{{!cust_shop_type}}" class="information-input-item">
@@ -96,5 +96,5 @@
 
 
   </view>
-  <button class="body-submit common-bottom" formType="submit">保存</button>
+  <button class="body-submit common-bottom" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >保存</button>
 </form>

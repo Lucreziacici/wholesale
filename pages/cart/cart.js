@@ -36,6 +36,9 @@ Page({
     })
     network.IsuserInfo();
   },
+  formSubmit:function(e){
+    network.PostFormId(e.detail.formId)
+  },
   onShow: function () {
     app.getUserInfo((userInfo, open_id) => {
       //更新数据
@@ -99,6 +102,7 @@ Page({
   
   //选择checkbox
   checkboxChange: function (e) {
+    console.log(e)
     var carts = this.data.carts, values = e.detail.value;
     var xuanzhong = true;
     this.setData({
@@ -216,6 +220,7 @@ Page({
   }),
   //提交订单
   formBindsubmit: function (e) {
+    network.PostFormId(e.detail.formId);
     var opneid = e.detail.value.openid
     var appid = e.detail.value.appid
     this.setData({

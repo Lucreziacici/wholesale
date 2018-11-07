@@ -160,7 +160,18 @@ page {
   font-size: 10pt;
   text-align: center;
 }
-
+.paybody button{
+  border: 0;
+  background: transparent;
+  font-size: 10pt;
+  color: white;
+  outline: transparent;
+  line-height: 30rpx;
+  padding: 0;
+}
+.paybody button::after {
+  border: 0;
+} 
 .payfooter {
   margin: 20rpx 0 0 0;
   font-size: 9pt;

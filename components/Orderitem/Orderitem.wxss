@@ -120,14 +120,29 @@
   border-bottom: 1px solid #eee;
 }
 
-.order-item-button text {
+.order-item-button text,.text {
   font-size: 10pt;
   border: 1px solid #aaa;
   border-radius: 10rpx;
   padding: 10rpx 30rpx;
   margin: 0 0 0 10rpx;
+  display: flex;
+  align-items: center;
 }
-
+.order-item-button button{
+  outline: 0;
+  border: 0;
+  background: transparent;
+   font-size: 10pt;
+   padding: 0;
+   line-height: 40rpx;
+}
+button::after{
+  outline: 0;
+  border: 0;
+  background: transparent;
+   font-size: 10pt;
+}
 .contact {
   position: relative;
   display: flex;

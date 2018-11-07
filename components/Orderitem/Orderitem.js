@@ -1,6 +1,7 @@
 // components/Toast/Toast.js
 var app = getApp()
 var resourceurl = app.globalData.resourceurl
+var network = require("../../libs/network.js")
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -68,6 +69,7 @@ Component({
     },
     //支付
     payOrder:function(e){
+      network.PostFormId(e.detail.formId)
       wx.navigateTo({
         url: '../final/final?order_no=' + e.target.dataset.id
       })

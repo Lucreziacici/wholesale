@@ -103,12 +103,11 @@ Page({
   },
   //支付
   zhifu: function (event) {
+    network.PostFormId(event.detail.formId)
     if (this.data.order.province == null) {
       this.selectComponent("#Toast").showToast("请选择收货地址");
     } else if ((this.data.order.real_name == null || this.data.order.id_card == null) && this.data.order.verify_id_flag) {
-      this.setData({
-        autonym: true
-      })
+      this.selectComponent("#Toast").showToast("请选择身份证信息");
     } else {
       wx.navigateTo({
         url: '../zhifu/zhifu?order_no=' + this.data.order.order_no
@@ -146,17 +145,16 @@ Page({
       showpay: !this.data.showpay
     })
   },
-  alipay: function () {
-
+  alipay: function (e) {
+    network.PostFormId(e.detail.formId)
     if (this.data.order.province == null) {
       this.selectComponent("#Toast").showToast("请选择收货地址");
     } else if ((this.data.order.real_name == null || this.data.order.id_card == null) && this.data.order.verify_id_flag) {
-      this.setData({
-        autonym: true
-      })
+      this.selectComponent("#Toast").showToast("请选择身份证信息");
     } else {
       wx.showLoading({
         title: '生成订单中…',
+        mask:true,
       })
       network.POST('OrderPay/AliOrderPay', { order_no: this.data.order_no },
         (res) => {
@@ -167,6 +165,7 @@ Page({
             })
             wx.showLoading({
               title: '正在生成图片',
+              mask: true,
             })
             const wxGetImageInfo = promise.promisify(wx.getImageInfo)
             var order = res.data.res_content;
@@ -218,6 +217,12 @@ Page({
           }
         }, (res) => {
           console.log(res);
+          wx.hideLoading();
+          this.setData({
+            tips: "请求超时,请稍后再来",
+            islayer: true,
+            button: '去逛逛吧'
+          })
         })
     }
   },
@@ -279,10 +284,22 @@ Page({
   },
   //提交实名信息
   postnews: function () {
+    var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    if (!this.data.team.real_name) {
+      this.selectComponent("#Toast").showToast("请填写姓名");
+      return false;
+    }
+    if (!this.data.team.id_card) {
+      this.selectComponent("#Toast").showToast("请填写身份证号");
+      return false;
+    }
+    if (!pattern.test(this.data.team.id_card)) {
+      this.selectComponent("#Toast").showToast("身份证号格式有误");
+      return false;
+    }
     wx.showLoading({
       title: '提交中……',
     });
-    console.log(this.data.team)
     var data={};
     data.real_name = this.data.team.real_name;
     data.id_card = this.data.team.id_card;

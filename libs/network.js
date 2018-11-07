@@ -3,19 +3,18 @@ var open_id;
 
 
 //公共地址
-var commonurl ="https://mall.shjinjia.com.cn/api/";
+// var commonurl ="https://mall.shjinjia.com.cn/api/";
 // 测试
-// var commonurl ="https://mallt.shjinjia.com.cn/api/";
+var commonurl ="https://mallt.shjinjia.com.cn/api/";
 //指向文慧地址
 // var commonurl = "http://10.10.200.4/MiniProgramMall.Api/api/";
-
+// var commonurl = "http://10.10.11.41:8039/MiniProgramMall.Api/api/";
 //店铺号
 var shop_id = "5";
 
 //不需要检测open_id的接口
 var detectionport = [];
 detectionport.push("Customer/GetOpenID");
-detectionport.push("HomePage/RequestHomePage");
 detectionport.push("Category/BigCategoryList");
 detectionport.push("Category/CategoryList");
 detectionport.push("Brand/BrandList");
@@ -95,7 +94,7 @@ function GET(url, success, fail, openid) {
  * fail 失败的回调
  */
 function POST(url, data, success, fail, openid) {
-  console.log(openid)
+  // console.log(openid)
   var trueurl = url;
   if (url.indexOf("?") < 0) {
   } else {
@@ -169,7 +168,7 @@ function POST(url, data, success, fail, openid) {
 * fail 失败的回调
 */
 function GETJSON(url, data, success, fail, openid) {
-  console.log(open_id)
+  // console.log(open_id)
   var trueurl = url;
   if (url.indexOf("?") < 0) {
   } else {
@@ -239,6 +238,7 @@ function IsuserInfo(success, fail) {
   wx.getStorage({
     key: 'userinfo_time',
     success: (res) => {
+      console.log(res)
       var timestamp = Date.parse(new Date());
       if (res.data) {
         if (res.data < timestamp) {
@@ -274,23 +274,30 @@ function IsuserInfo(success, fail) {
       }
     },
     fail: function (res) {
-      wx.getStorage({
-        key: 'userinfo',
-        success: function (res) {
-          if (res.data.nick_name == null) {
-            wx.navigateTo({
-              url: '../accredit/accredit'
-            })
-          }
-        },
-        fail: function (res) {
-          console.log(res);
+      console.log(res)
+      // setTimeout(function () {
+      //   wx.getStorage({
+      //     key: 'userinfo',
+      //     success: function (res) {
+      //       console.log(res)
+      //       if (res.data.phone !== null) {
+      //         if (res.data.nick_name == null) {
+      //           wx.navigateTo({
+      //             url: '../accredit/accredit'
+      //           })
+      //         }
+      //       }
 
-          wx.navigateTo({
-            url: '../accredit/accredit'
-          })
-        }
-      })
+      //     },
+      //     fail: function (res) {
+      //       console.log(res)
+      //       wx.navigateTo({
+      //         url: '../accredit/accredit'
+      //       })
+      //     }
+      //   })
+      // }, 500)
+
     }
   })
 
@@ -312,10 +319,55 @@ function throttle(fn, gapTime) {
     }
   }
 }
+function PostFormId(e) {
+  console.log(e)
+  if (e == 'the formId is a mock one') return false
+  wx.getStorage({
+    key: 'open_id',
+    success: (res) => {
+      open_id = res.data
+      wx.request({
+        url: commonurl + 'Template/CollectFormID',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'open_id': open_id,
+          'shop_id': shop_id
+        },
+        method: 'POST',
+        data: { form_id: e },
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      });
+    },
+    fail: (res) => {
+      wx.request({
+        url: commonurl + 'Template/CollectFormID',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'open_id': open_id,
+          'shop_id': shop_id
+        },
+        method: 'POST',
+        data: { form_id: e },
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      });
+    }
+  })
+}
 module.exports = {
   GET: GET,
   POST: POST,
   GETJSON: GETJSON,
   IsuserInfo: IsuserInfo,
-  throttle: throttle
+  throttle: throttle,
+  PostFormId: PostFormId
 }

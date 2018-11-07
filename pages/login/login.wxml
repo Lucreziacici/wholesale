@@ -1,5 +1,5 @@
 <!--删减10行 toast 抽象by xixi 18/4/3  -->
-<form bindsubmit="formBindsubmit" bindreset="formReset">
+<!-- <form bindsubmit="formBindsubmit" bindreset="formReset"> -->
   <view class='information-input-list'>
     <!-- <view class="information-input-item">
       <view class="information-input-name">
@@ -22,7 +22,7 @@
         联系人电话
       </view>
       <view class="information-input-input ">
-        <input type="number" name="phone" maxlength='11' placeholder="请输入联系人电话" />
+        <input type="number" focus name="phone" maxlength='11' bindinput="updatenum" placeholder="请输入联系人电话" />
       </view>
     </view>
     <!-- <view wx:if="{{cust_shop_type}}" class="information-input-item">
@@ -108,6 +108,7 @@
       <text>《缙嘉注册协议》</text>
     </view>
   </view>
-  <button class="body-submit" formType="submit">注册</button>
-</form>
+  
+  <button class="body-submit" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >注册</button>
+<!-- </form> -->
 <Toast id="Toast"></Toast>

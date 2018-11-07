@@ -192,6 +192,12 @@ page {
   align-items: center;
   justify-content: center;
 }
+.body-bottom-2 button{
+  outline: 0;
+  border:0;
+  background-color: #9c855c;
+  color: white;
+}
 
 .bottom-text1 {
   position: relative;
@@ -336,6 +342,17 @@ page {
   align-items: center;
   border-radius: 10rpx;
   font-size: 10pt;
+}
+.changebox_footer_button button{
+  outline: 0;
+  border:none;
+  background: transparent;
+  font-size: 10pt;
+  color: white;
+}
+button::after{
+   outline: 0;
+  border:none;
 }
 .changebox_footer .changebox_footer_button:nth-child(1){
   background: #9a9a9a;

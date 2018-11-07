@@ -11,8 +11,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [],
-    navigation: [],
+    imgUrls: [], 
+    avigation_list: [],
     special: [],
     page: {},
     indicatorDots: true,
@@ -25,6 +25,10 @@ Page({
     topNum: "",
     imgheights: [],
     resourceurl: resourceurl
+  },
+  formSubmit: function (e) {
+    console.log(e.detail.formId)
+    network.PostFormId(e.detail.formId)
   },
   onLoad: function() {
     network.IsuserInfo();
@@ -56,7 +60,11 @@ Page({
         }
       } else if (res.data.res_content.page.category_show_type == 'B') {
         for (var i = 0; i < res.data.res_content.recommend.length; i++) {
-          res.data.res_content.recommend[i].category_goods_list = res.data.res_content.recommend[i].category_goods_list.slice(0, 5)
+          res.data.res_content.recommend[i].category_goods_list = res.data.res_content.recommend[i].category_goods_list.slice(0, 8)
+        }
+      } else if (res.data.res_content.page.category_show_type == 'C') {
+        for (var i = 0; i < res.data.res_content.recommend.length; i++) {
+          res.data.res_content.recommend[i].category_goods_list = res.data.res_content.recommend[i].category_goods_list.slice(0, 6)
         }
       }
       wx.setNavigationBarColor({
@@ -66,7 +74,8 @@ Page({
       this.setData({
         imgUrls: res.data.res_content.banner,
         special: res.data.res_content.recommend,
-        page: res.data.res_content.page
+        page: res.data.res_content.page,
+        navigation_list: res.data.res_content.navigation_list
       })
     }, (res) => {
       console.log(res)

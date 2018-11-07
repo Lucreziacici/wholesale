@@ -1,5 +1,5 @@
 // components/Toast/Toast.js
-
+var network = require("../../libs/network.js")
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -46,9 +46,20 @@ Component({
   data: {
     commodity: {}
   },
-  ready: function() {},
+  ready: function() {
+    console.log(this.data.commodity)
+  },
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+
+    formSubmit: function (e) {
+      console.log("模板消息id", e)
+      network.PostFormId(e.detail.formId);
+      wx.navigateTo({
+        url: '../product/product?id=' + e.target.dataset.id
+      })
+    }
+  }
 })

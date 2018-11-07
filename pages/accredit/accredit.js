@@ -62,20 +62,23 @@ Page({
             },
             fail: function (res) {
               console.log(res);
+              this.selectComponent("#Toast").showToast(res);
             }
           })
         } else {
-          this.selectComponent("#Toast").showToast(res.data.res_message);
+          if (res.data.res_message){
+            this.selectComponent("#Toast").showToast(res.data.res_message);
+          }else{
+            this.selectComponent("#Toast").showToast(res.data.Message);
+          }
+         
         }
       }, (res) => {
-        console.log(res)
+        this.selectComponent("#Toast").showToast(res.errMsg);
       })
 
     } else {
-      wx.showToast({
-        icon: 'none',
-        title: '请允许授权',
-      })
+      this.selectComponent("#Toast").showToast('请允许授权');
     }
 
   },

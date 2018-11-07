@@ -1,14 +1,14 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.9",
+	"libVersion": "2.3.0",
 	"appid": "wx1a7b98cc76d8fed4",
 	"projectname": "wholesale_git",
 	"isGameTourist": false,
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -90,7 +90,7 @@
 					"id": 9,
 					"name": "订单详情",
 					"pathName": "pages/orderDetail/orderDetail",
-					"query": "order_no=D13867669211284480&status="
+					"query": "order_no=D13927397091181568"
 				},
 				{
 					"id": -1,
@@ -99,10 +99,10 @@
 					"query": "oid=FX0402132515"
 				},
 				{
-					"id": 12,
+					"id": 11,
 					"name": "物流",
 					"pathName": "pages/logistics/logistics",
-					"query": "order_no=D13761420865881088"
+					"query": "order_no=D13900679320470528"
 				},
 				{
 					"id": 12,
@@ -114,7 +114,7 @@
 					"id": 13,
 					"name": "商品详情",
 					"pathName": "pages/product/product",
-					"query": "id=280"
+					"query": "id=278"
 				},
 				{
 					"id": 23,
@@ -189,10 +189,10 @@
 					"query": "openid=osCIE0dcoxQDjsKy3G1jmLP0i6Ls&cust_shop_type=Taobao"
 				},
 				{
-					"id": -1,
+					"id": 26,
 					"name": "支付",
 					"pathName": "pages/zhifu/zhifu",
-					"query": "order_no=D13866239539086336"
+					"query": "order_no=D13926115091055616"
 				},
 				{
 					"id": -1,

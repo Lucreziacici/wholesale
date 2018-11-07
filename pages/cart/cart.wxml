@@ -4,7 +4,7 @@
   <text>购物车竟然是空的</text>
   <text>"再忙，也要记得买点什么犒赏自己~"</text>
 </view>
-<form wx:if="{{carts.length!==0||invalid_list.length!==0}}" bindsubmit="formBindsubmit" bindreset="formReset">
+<form wx:if="{{carts.length!==0||invalid_list.length!==0}}"  report-submit="true" bindsubmit="formBindsubmit" bindreset="formReset">
   <input type="text" hidden="false" name="appid" value="{{appid}}" />
   <input type="text" hidden="false" name="openid" value="{{openid}}" />
   <view class="body-tab">
@@ -37,9 +37,9 @@
               </view>
               <view style='display:flex;align-items: center; justify-content: space-between;margin:10rpx 0 0 0;padding:0 20rpx 0 0 '>
                 <view style=" ">
-                  <text wx:if="{{isApprove&&item.intax==1&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_price}}</text>
+                  <text wx:if="{{isApprove&&item.intax==1&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.discount_price}}</text>
                   <text wx:if="{{isApprove&&item.intax==0&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_per_price}}<text  style='font-size:8pt'>+税费:￥{{item.goods_per_tax}}</text></text>
-                   <text wx:if="{{isApprove&&item.inbond=='0'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_price}}</text>
+                   <text wx:if="{{isApprove&&item.inbond=='0'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.discount_price}}</text>
                   <text wx:if="{{!isApprove}}" style="font-size: 17px;color: #9a8c65">￥***</text>
                 </view>
 
@@ -84,9 +84,9 @@
               </view>
               <view style='display:flex;align-items: center; justify-content: space-between;margin:20rpx 0 0 0;padding:0 20rpx 0 0 '>
                 <view style=" ">
-                  <text wx:if="{{isApprove&&item.intax==1&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_price}}</text>
+                  <text wx:if="{{isApprove&&item.intax==1&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.discount_price}}</text>
                   <text wx:if="{{isApprove&&item.intax==0&&item.inbond=='1'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_per_price}}<text  style='font-size:8pt'>+税费:￥{{item.goods_per_tax}}</text></text>
-                  <text wx:if="{{isApprove&&item.inbond=='0'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.goods_price}}</text>
+                  <text wx:if="{{isApprove&&item.inbond=='0'}}" style="font-size: 11pt;color: #9a8c65">￥{{item.discount_price}}</text>
                   <text wx:if="{{!isApprove}}" style="font-size: 17px;color: #9a8c65">￥***</text>
 
                 </view>
@@ -122,7 +122,7 @@
       </view>
       <text class="bottom-text3">含税金</text>
     </view>
-    <button class="body-bottom-2" form-type="submit">结算</button>
+    <button class="body-bottom-2" form-type="submit"><form report-submit="true" bindsubmit="formSubmit"><button formType="submit" hover-class="none">结算</button></form></button>
   </view>
 </form>
 <view wx:if="{{IsShow}}" class='changenum'>
@@ -139,8 +139,8 @@
       <view id="{{ActiveItem.id}}" bindtap="{{ActiveItem.count<ActiveItem.stock_count?'activeaddNum':'most'}}">+</view>
     </view>
     <view class='changebox_footer'>
-      <view class='changebox_footer_button' bindtap='closechangebox'>我再想想</view>
-      <view class='changebox_footer_button' bindtap='changeNumSure'>确认</view>
+      <view class='changebox_footer_button' bindtap='closechangebox'><form report-submit="true" bindsubmit="formSubmit"><button formType="submit" hover-class="none">我再想想</button></form></view>
+      <view class='changebox_footer_button' bindtap='changeNumSure'><form report-submit="true" bindsubmit="formSubmit"><button formType="submit" hover-class="none">确认</button></form></view>
     </view>
   </view>
 

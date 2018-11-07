@@ -11,14 +11,14 @@ App({
     // this.getUserInfo();
   },
   //获取系统配置 暂时没有用到 以后可能模板消息会遇到
-  // GetAccessToken:function(){
-  //   network.GET('WxConfig/GetAccessToken', 
-  //   (res) => {
-  //   console.log(res)
-  //   }, (res) => {
-  //     console.log(res);
-  //   })
-  // },
+  GetAccessToken:function(){
+    network.GET('WxConfig/GetAccessToken', 
+    (res) => {
+    console.log(res)
+    }, (res) => {
+      console.log(res);
+    })
+  },
   update: function () {
     // 获取小程序更新机制兼容
     if (wx.canIUse('getUpdateManager')) {
@@ -68,28 +68,33 @@ App({
         success:  (e)=> {
           wx.request({
             //正式
-            url: "https://mall.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
+            // url: "https://mall.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
             //测试
-            // url: "https://mallt.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
+            url: "https://mallt.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
             //文慧
             // url: "http://10.10.200.4/MiniProgramMall.Api/api/Customer/GetOpenID?js_code=" + e.code + "",
+            // url: "http://10.10.11.41:8039/MiniProgramMall.Api/api/Customer/GetOpenID?js_code=" + e.code + "",
             header: {
               'Content-Type': 'application/json',
               'shop_id': '5'
             },
             success: (res) => {
               console.log(res)
-              this.globalData.open_id = res.data.res_content.open_id;
-              this.globalData.userInfo = res.data.res_content;
-              typeof cb == "function" && cb(this.globalData.userInfo, res.data.res_content.open_id)
-              if (res.data.res_content.phone==null){
-                // setTimeout(function () {
+              if (res.data.res_status_code == '0') {
+                this.globalData.open_id = res.data.res_content.open_id;
+                this.globalData.userInfo = res.data.res_content;
+                typeof cb == "function" && cb(this.globalData.userInfo, res.data.res_content.open_id)
+                if (res.data.res_content.phone == null) {
+                  // setTimeout(function () {
                   wx.navigateTo({
                     url: '../login/login?openid=' + res.data.res_content.open_id
                   })
-                // }, 200)
-              
-              }
+                  // }, 200)
+                } else if (res.data.res_content.nick_name == null) {
+                  wx.navigateTo({
+                    url: '../accredit/accredit'
+                  })
+                }
                 wx.setStorage({
                   key: 'open_id',
                   data: res.data.res_content.open_id,
@@ -98,6 +103,13 @@ App({
                   key: 'userinfo',
                   data: res.data.res_content,
                 });
+              }else{
+                wx.showToast({
+                  icon: "none",
+                  title: res.data.res_message,
+                })
+              }
+             
             },
             fail: function (res) {
               console.log(res)

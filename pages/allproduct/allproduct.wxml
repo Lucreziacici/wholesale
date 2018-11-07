@@ -8,14 +8,14 @@
     </view>
   </view>
   <view class='filter'>
-    <view bindtap='orderby' id="1" data-rank="desc" data-column="create_time" class=" {{currentTab==1 ? 'active' : ''}}">
+    <view bindtap='orderby' id="1" data-rank="desc" data-column="monthly_sales_volume" class=" {{currentTab==1 ? 'active' : ''}}">
       <text>综合</text>
     </view>
     <view bindtap='orderby' id="2" data-rank="asc" data-column="show_price" class=" {{currentTab==2 ? 'active' : ''}}">
       <text>价格</text>
       <image src='{{price_active_img}}'></image>
     </view>
-    <view bindtap='orderby' id="3" data-rank="desc" data-column="sales_volume" class=" {{currentTab==3 ? 'active' : ''}}">
+    <view bindtap='orderby' id="3" data-rank="desc" data-column="monthly_sales_volume" class=" {{currentTab==3 ? 'active' : ''}}">
       <text>销量</text>
     </view>
     <view bindtap='openchoosefilter'>
@@ -28,7 +28,7 @@
     <Commodity title='{{item.goods_name}}' commodity="{{item}}" commodityid="{{item.goods_id}}" img="{{item.main_image}}" price="{{item.show_price}}" isApprove='{{isApprove}}' item="{{item}}"></Commodity>
   </block>
 </view>
-<view wx:if="{{!nomore}}" class='nomore'>٩(๑•̀ω•́๑)۶努力加载中...</view>
+<view wx:if="{{!nomore&&!noresult}}" class='nomore'><image src='{{resourceurl}}listloading.gif'></image></view>
 <view wx:if="{{nomore}}" class='nomore'>╮(╯▽╰)╭没有更多了</view>
 <view wx:if="{{noresult}}" class='noresult'>
   <image src='{{resourceurl}}noresult.jpg'></image>

@@ -33,6 +33,7 @@ Page({
     })
     wx.showLoading({
       title: '请求支付中…',
+      mask: true,
     })
     var that = this
     network.POST('OrderPay/WxOrderPay', { order_no: options.order_no },
@@ -78,6 +79,12 @@ Page({
         }
       }, (res) => {
         console.log(res);
+        wx.hideLoading();
+        this.setData({
+          tips: "请求超时,请稍后再来",
+          islayer: true,
+          button: '去逛逛吧'
+        })
       }, this.data.userid)
    
     // app.getUserInfo(function (userInfo, openid) {

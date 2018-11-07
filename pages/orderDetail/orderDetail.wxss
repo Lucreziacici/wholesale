@@ -30,7 +30,19 @@ page {
   padding: 10rpx 20rpx;
   font-size: 10pt;
 }
-
+.copy button{
+  background: transparent;
+  font-size: 10pt;
+  outline:0;
+  border:none;
+  padding:0;
+  margin:0;
+  line-height: 40rpx;
+}
+.copy button::after{
+  outline:0;
+  border:none;
+}
 .orderdetail-message {
   display: flex;
   justify-content: space-between;

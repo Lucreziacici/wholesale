@@ -16,24 +16,50 @@
         </swiper-item>
       </block>
     </swiper>
+     <!-- 团购信息 -->
+    <view wx:if="{{Isseckill_flag&&Iscount}}" class='group_message'>
+       <view><text  decode="{{true}}" space="{{true}}" >距离抢购开始</text><text>{{counttime.day}}天</text>:<text>{{counttime.hou}}时</text>:<text>{{counttime.min}}分</text>:<text>{{counttime.sec}}秒</text></view>
+    </view>
     <view class='share'>
-
       <image src='{{resourceurl}}share.png'></image>
       <button open-type="share"></button>
     </view>
-
-
-
     <!--商品信息  -->
     <view class="commodity-message white">
       <text class='commodity-title'>{{product.goods_name}}</text>
       <text class='commodity-description' wx:if="{{product.summary}}">{{product.summary}}</text>
       <view class='commodity_price_item'>
         <view class='commodityprice'>
-          <view wx:if="{{isApprove}}" class='commodity-price'>￥{{activeprice}}</view>
           <view wx:if="{{!isApprove}}" class='commodity-price'>￥***</view>
-          <view wx:if="{{product.intax=='1'&&product.inbond=='1'}}" class='tax'>包税</view>
-          <view wx:if="{{product.intax=='0'&&product.inbond=='1'}}" class='tax'>税费：￥{{tax}}</view>
+          <view wx:if="{{isApprove&&discount_type==0}}" class='commodity-price'>
+            <text>￥{{discount_price}}</text>
+          </view>
+          <view wx:if="{{isApprove&&discount_type==1}}" class='commodity-price'>
+            <text>vip价:￥{{discount_price}}</text>
+            <text class='original'>原价:￥{{original}}</text>
+          </view>
+          <view wx:if="{{isApprove&&discount_type==2}}" class='commodity-price'>
+            <text>上新价:￥{{discount_price}}</text>
+            <text class='original'>原价:￥{{original}}</text>
+          </view>
+          <view wx:if="{{isApprove&&discount_type==3}}" class='commodity-price'>
+            <text>活动价:￥{{discount_price}}</text>
+            <text class='original'>原价:￥{{original}}</text>
+          </view>
+          <view wx:if="{{product.intax=='1'&&product.inbond=='1'}}" class='tax'>
+            <text>包税</text>
+            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月销{{product.monthly_sales_volume}}笔</text>
+            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收藏数：{{product.collection_volume}}</text>
+          </view>
+          <view wx:elif="{{product.intax=='0'&&product.inbond=='1'}}" class='tax'>
+            <text>税费：￥{{tax}}</text>
+            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月销{{product.monthly_sales_volume}}笔</text>
+            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收藏数：{{product.collection_volume}}</text>
+          </view>
+          <view wx:else class='tax'>
+            <text decode="{{true}}" space="{{true}}">月销{{product.monthly_sales_volume}}笔</text>
+            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收藏数：{{product.collection_volume}}</text>
+          </view>
         </view>
         <view class='collect_item'>
           <view class='collect_item_cell' bindtap='collect'>
@@ -62,7 +88,11 @@
           <text>发货地：</text>
           <text>{{active.alias_name}}</text>
         </view>
-        <view class="commodity-info-item" data-type='2' bindtap="{{product.shangjia=='已下架'?'':'onChangeShowState'}}">
+        <view wx:if="{{!Buystate}}" class="commodity-info-item" data-type='2'>
+          <text>选择规格</text>
+          <image src="{{resourceurl}}8.png"></image>
+        </view>
+        <view wx:else class="commodity-info-item" data-type='2' bindtap="{{product.shangjia=='已下架'?'':'onChangeShowState'}}">
           <text>选择规格</text>
           <image src="{{resourceurl}}8.png"></image>
         </view>
@@ -135,15 +165,24 @@
     </view>
     <view class='buy-button'>
       <view class='add-to-cart' wx:if="{{product.del_flag==1||product.put_on_type=='1'}}" style="background:#aaa">已下架</view>
-      <view class='add-to-cart' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='0' bindtap="{{product.put_on_type=='1'?'':'onChangeShowState'}}">加入购物车</view>
+      <view class='add-to-cart' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='0' bindtap="{{product.put_on_type=='1'?'':'onChangeShowState'}}">
+        <form report-submit="true" bindsubmit="formSubmit">
+          <button formType="submit" hover-class="none">加入购物车</button>
+        </form>
+      </view>
       <view class='add-to-cart' wx:elif="{{!Buystate}}" style="background:#aaa">已售罄</view>
       <view class='add-to-cart' wx:if="{{product.del_flag==1||product.put_on_type=='1'}}" style="background:#aaa">已下架</view>
-      <view class='buy-now' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='1' bindtap="{{product.put_on_type=='1'?'':'onChangeShowState'}}">立即购买</view>
+      <view class='buy-now' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='1' bindtap="{{product.put_on_type=='1'?'':'onChangeShowState'}}">
+        <form report-submit="true" bindsubmit="formSubmit">
+          <button formType="submit" hover-class="none">立即购买</button>
+        </form>
+      </view>
       <view class='buy-now' wx:elif="{{!Buystate}}" style="background:#aaa">已售罄</view>
     </view>
 
   </view>
 </view>
+
 <!--下单弹框  -->
 <view class="widgets-cover widgets-cover-{{widgets?'hide':'show'}}">
   <view class="cover-bg" bindtap="onChangeShowState"></view>
@@ -151,9 +190,10 @@
     <view class="cover-header">
       <image src="{{product.main_image}}"></image>
       <view class="main-message">
-        <text class="main-message-price">￥{{activeprice}}</text>
+        <text class="main-message-price">￥{{discount_price}}</text>
+        <text wx:if="{{discount_type==1||discount_type==2||discount_type==3}}" class="original">原价:￥{{original}}</text>
         <text class="main-message-title">{{product.brand_name}}</text>
-        <text class="main-message-repertory">库存：{{repertory}}件</text>
+        <text class="main-message-repertory">库存：{{repertory?repertory:'0'}}件</text>
       </view>
     </view>
     <view class='cover-body'>
@@ -161,8 +201,8 @@
         <view class='message-box-title'>选择规格</view>
         <view class='message-box-specification'>
           <view class="guige-body1-rudio" wx:for="{{product.spec_list}}" wx:key="i" wx:for-index="i">
-            <view class="specification-button specification-{{currentTab==item.spec_no ? 'actived' : 'unactivated'}}" data-id="{{item.spec_no}}" data-bianma="{{item.spec_name}}" data-price="{{item.price}}" data-tax="{{item.tax}}" data-repertory="{{item.stock_count}}"
-              data-name="{{item.spec_name}}" catchtap="{{item.stock_count>0 ? 'rudioChoose' : 'soldout'}}">
+            <view class="specification-button {{item.stock_count<=0?'nocount':''}} specification-{{currentTab==item.spec_no ? 'actived' : 'unactivated'}}" data-id="{{item.spec_no}}" data-bianma="{{item.spec_name}}" data-price="{{item.price}}" data-tax="{{item.tax}}"
+              data-repertory="{{item.stock_count}}" data-item="{{item}}" data-name="{{item.spec_name}}" catchtap="{{item.stock_count>0 ? 'rudioChoose' : 'soldout'}}">
               <text class="rudio-text1">{{item.spec_name}}</text>
             </view>
           </view>
@@ -185,10 +225,18 @@
     <view wx:else class="cover-footer-choose">
       <view class='buy-button'>
         <view class='add-to-cart' wx:if="{{product.del_flag==1||product.put_on_type=='1'}}" style="background:#aaa">已下架</view>
-        <view class='add-to-cart' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='0' bindtap="{{product.put_on_type=='1'?'':'addcart'}}">加入购物车</view>
+        <view class='add-to-cart' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='0' bindtap="{{product.put_on_type=='1'?'':'addcart'}}">
+          <form report-submit="true" bindsubmit="formSubmit">
+            <button formType="submit" hover-class="none">加入购物车</button>
+          </form>
+        </view>
         <view class='add-to-cart' wx:elif="{{!Buystate}}" style="background:#aaa">已售罄</view>
         <view class='add-to-cart' wx:if="{{product.del_flag==1||product.put_on_type=='1'}}" style="background:#aaa">已下架</view>
-        <view class='buy-now' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='1' bindtap="{{product.put_on_type=='1'?'':'addorder'}}">立即购买</view>
+        <view class='buy-now' wx:elif="{{Buystate}}" style="{{product.put_on_type=='1'?'opacity: 0.4':''}}" data-type='1' bindtap="{{product.put_on_type=='1'?'':'addorder'}}">
+          <form report-submit="true" bindsubmit="formSubmit">
+            <button formType="submit" hover-class="none">立即购买</button>
+          </form>
+        </view>
         <view class='buy-now' wx:elif="{{!Buystate}}" style="background:#aaa">已售罄</view>
       </view>
     </view>

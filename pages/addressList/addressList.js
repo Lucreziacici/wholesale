@@ -114,8 +114,13 @@ Page({
     network.POST('Order/UpdateOrderAddress',data,
       (res) => {
         console.log(res)
-        prevPage.getOrderDetail();
-        wx.navigateBack({})
+        if (res.data.res_status_code == '0') {
+          prevPage.getOrderDetail();
+          wx.navigateBack({})
+        }else{
+          this.selectComponent("#Toast").showToast(res.data.res_message)
+        }
+       
         // prevPage.setData({
         //   orderinformation: res.data.object,
         //   orderslist: res.data.objs,

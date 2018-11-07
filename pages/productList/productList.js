@@ -16,8 +16,8 @@ Page({
     brand_code: "", //品牌code
     page_index: "1", //当前页
     page_size: "8", //每页记录数
-    order_column: "", //排序字段 show_price
-    order_sord: "asc", //正序asc，倒序desc
+    order_column: "monthly_sales_volume", //排序字段 show_price
+    order_sord: "desc", //正序asc，倒序desc
     category_id: "", //子分类id
     price_active_img: resourceurl + "/arrow_gray.png",
     nomore: false, //是否加载到底

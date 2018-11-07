@@ -29,7 +29,7 @@
             <view>  × {{item.goods_count}}</view>
             
              <!-- <view wx:if="{{item.refund_detail_status=='00'&&order.status!=='00'&&order.status!=='40'}}" data-id='{{item.order_detail_no}}' data-order_no="{{item.order_no}}" catchtap="refund" class='button'>申请售后</view>-->
-             <!-- <view wx:if="{{item.refund_detail_status=='10'&&source!=='orderList'}}" data-id="{{order.refund_no}}" catchtap="cancelrefund" class='button'>取消申请</view> -->
+             <view wx:if="{{item.refund_detail_status=='10'&&source!=='orderList'}}" data-id="{{order.refund_no}}" catchtap="cancelrefund" class='button'>取消申请</view>
              <!-- <view wx:elif="{{order.status=='00'||order.status=='40'}}"></view>
              <view wx:elif="{{(order.status!=='00'||order.status!=='40'||order.refund_detail_status!=='10')&&item.refund_status_name}}" >{{item.refund_status_name}}</view> -->
               
@@ -42,13 +42,13 @@
 
     <view class='order-item-button'>
       <!--订单待支付  -->
-      <text bindtap='payOrder' wx:if="{{order.status=='00'}}" data-id='{{order.order_no}}'>去付款</text>
+      <view  class='text' wx:if="{{order.status=='00'}}"><form report-submit="true" bindsubmit="payOrder" data-id='{{order.order_no}}'><button formType="submit" hover-class="none">去付款</button></form></view>
       <text bindtap='cancelOrder' wx:if="{{order.status=='00'}}" data-id='{{order.order_no}}'>取消订单</text>
       <!--订单已支付/已发货 -->
       <text bindtap='refundOrder' wx:if="{{(order.status=='10'&&order.refund_status=='00')}}" data-id='{{order.order_no}}'>退款</text>
       <text bindtap='checkLogistics' wx:if="{{order.status=='20'||order.status=='21'||order.status=='30'}}" data-id="{{order.order_no}}">查看物流</text>
 
-      <text bindtap='confirmOrder' wx:if="{{order.status=='20'||order.status=='21'}}" data-id="{{order.order_no}}">确认收货</text>
+      <text bindtap='confirmOrder' wx:if="{{order.status=='20'}}" data-id="{{order.order_no}}">确认收货</text>
 
       <text bindtap='deleteOrder' wx:if="{{order.status=='30'||order.status=='40'||order.status=='90'}}" data-id='{{order.order_no}}'>删除订单</text>
 

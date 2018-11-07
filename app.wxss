@@ -39,8 +39,6 @@
 .information-input-item {
   display: flex;
   align-items: center;
-  height: 100rpx;
-  border-bottom: 1rpx solid #e9e9e9;
   font-size: 11pt;
   color: #696969;
 }
@@ -51,10 +49,15 @@
 
 .information-input-input {
   width: 500rpx;
+  border-bottom: 1rpx solid #e9e9e9;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
 }
 
 .information-input-input input {
   color: #333;
+  width: 500rpx;
 }
 
 /* 分类弹框  */
@@ -95,9 +98,8 @@
 .classify-list {
   display: flex;
   flex-wrap: wrap;
-  height:960rpx;
-overflow-y:auto;
-
+  height: 960rpx;
+  overflow-y: auto;
 }
 
 .classify-list-title {
@@ -255,23 +257,22 @@ overflow-y:auto;
   margin: 0 0 0 10rpx;
 }
 
-.model_box{
+.model_box {
   z-index: 100;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-   top: 0; 
+  top: 0;
   left: 0;
   right: 0;
   margin: 200rpx 0 0 0;
 }
+
 .model {
   width: 600rpx;
   border-radius: 20rpx;
   padding: 0 34rpx;
-
-
 }
 
 .model_header {
@@ -309,7 +310,21 @@ overflow-y:auto;
   font-size: 10pt;
   border-radius: 10rpx;
 }
-.model_footer{
+.button button{
+  font-size: 10pt;
+  color:white;
+  background: transparent;
+  border:none;
+  outline: 0;
+  width: 600rpx;
+}
+.button button::after{
+
+  border:none;
+  outline: 0;
+}
+
+.model_footer {
   margin: 40rpx 0 32rpx 0;
   color: #c37f55;
   font-size: 8pt;
