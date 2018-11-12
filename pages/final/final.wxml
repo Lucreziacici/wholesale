@@ -42,14 +42,14 @@
     <view wx:if="{{order.real_name}}" class='choose-item-center'>
       <view class='choose-item-center-bottom'>
         <text>实名信息:</text>
-        <text >{{order.real_name}}</text>
+        <text>{{order.real_name}}</text>
       </view>
       <view class='choose-item-center-bottom'>
         <text>身份证号码:</text>
         <text wx:if="{{order.id_card}}">{{order.id_card}}</text>
       </view>
     </view>
-       <!--如果没有默认地址  -->
+    <!--如果没有默认地址  -->
     <view class='choose-item-center' wx:if="{{!order.real_name}}">
       <view class='choose-item-center-bottom'>
         <text>输入实名信息</text>
@@ -103,8 +103,16 @@
     <text>合计:￥{{order.pay_price}}</text>
   </view>
   <view class='paybody'>
-  <view wx:if="{{paymethod=='wx'}}" ><form bindsubmit="zhifu" report-submit="true"><button formType="submit">微信支付</button></form></view>
-    <view wx:if="{{paymethod=='ali'}}" ><form bindsubmit="alipay" report-submit="true"><button formType="submit">支付宝支付</button></form></view>
+    <view wx:if="{{paymethod=='wx'}}">
+      <form bindsubmit="zhifu" report-submit="true">
+        <button formType="submit">微信支付</button>
+      </form>
+    </view>
+    <view wx:if="{{paymethod=='ali'}}">
+      <form bindsubmit="alipay" report-submit="true">
+        <button formType="submit">支付宝支付</button>
+      </form>
+    </view>
   </view>
   <view class='payfooter'>
     <text>您还可以使用</text>
@@ -133,6 +141,10 @@
     <view class='order-message-item'>
       <view>商品总价</view>
       <view> ￥{{order.goods_price}}</view>
+    </view>
+    <view wx-if="{{order.discount}}" class='order-message-item'>
+      <text>优惠</text>
+      <text>￥{{order.discount}}</text>
     </view>
   </view>
 </view>
@@ -167,7 +179,7 @@
 <view wx:if="{{autonym}}" class='layer' bindtap='openautonym'>
 </view>
 <view class='model_box' wx:if="{{autonym}}">
-  <view  class='model white'>
+  <view class='model white'>
     <view class='model_header'>
       海关身份实名认证
     </view>
@@ -186,8 +198,8 @@
     </view>
   </view>
 </view>
-<view wx:if="{{islayer}}" class='model_box' >
-  <view  class='model white'>
+<view wx:if="{{islayer}}" class='model_box'>
+  <view class='model white'>
     <view class='model_header'>
       温馨提示
     </view>
@@ -202,4 +214,4 @@
 <view wx:if="{{islayer}}" class='layer'>
 
 </view>
-  <Toast id="Toast"></Toast>
+<Toast id="Toast"></Toast>

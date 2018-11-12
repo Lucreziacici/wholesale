@@ -68,9 +68,9 @@ App({
         success:  (e)=> {
           wx.request({
             //正式
-            // url: "https://mall.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
+            url: "https://mall.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
             //测试
-            url: "https://mallt.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
+            // url: "https://mallt.shjinjia.com.cn/api/Customer/GetOpenID?js_code=" + e.code + "",
             //文慧
             // url: "http://10.10.200.4/MiniProgramMall.Api/api/Customer/GetOpenID?js_code=" + e.code + "",
             // url: "http://10.10.11.41:8039/MiniProgramMall.Api/api/Customer/GetOpenID?js_code=" + e.code + "",

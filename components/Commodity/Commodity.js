@@ -47,7 +47,6 @@ Component({
     commodity: {}
   },
   ready: function() {
-    console.log(this.data.commodity)
   },
   /**
    * 组件的方法列表
